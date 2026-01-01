@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Phishing Detection System</h1>
+        <p>Enter a URL or Email Text below to check if it's safe.</p>
+        
+        <form action="/predict" method="post">
+            <input type="text" name="url" placeholder="Enter URL or Text here..." required value="{{ url if url else '' }}">
+            <button type="submit">Check Now</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result {{ result_class }}">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+        
+        <div class="info">
+            <h3>How it works:</h3>
+            <p>This system uses Machine Learning to analyze URL features like length, special characters, and keywords to identify potential phishing attempts.</p>
+        </div>
+    </div>
+</body>
+</html>

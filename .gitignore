@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+*.pkl
+Lib_old/
+Scripts_old/
+.DS_Store
